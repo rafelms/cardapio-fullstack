@@ -10,7 +10,7 @@ interface CardProps {
 
 export function Card({ id, price, title, image }: CardProps) {
     const { mutate } = useFoodDataDelete();
-
+    
     const handleDelete = () => {
         if (window.confirm(`Deseja realmente excluir ${title}?`)) {
             if (id !== undefined) {
@@ -21,8 +21,7 @@ export function Card({ id, price, title, image }: CardProps) {
 
     return (
         <div className="card">
-            <button className='btn-delete' onClick={handleDelete}>x</button>
-            
+            <button className='btn-delete' onClick={handleDelete}>x</button>           
             <img src={image} alt={`Imagem de ${title}`} />
             <h2>{title}</h2>
             <p>

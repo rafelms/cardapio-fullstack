@@ -1,34 +1,66 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-:root{
+:root {
     font-family: 'Montserrat', sans-serif;
 }
+
 .container {
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
-    width: 100vw
+    width: 100%; 
+    padding: 20px;
+    box-sizing: border-box;
 }
-  
+
+/* GRID DINÂMICO: Ele decide quantas colunas cabem sozinho */
 .card-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 24px;
+    width: 100%;
+    max-width: 1200px; 
+    margin-top: 30px;
 }
-  
+
 .container button {
     background-color: #0275d8;
     color: white;
     font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 24px;
     position: fixed;
-    bottom: 16px;
+    bottom: 24px;
     right: 24px;
-    transition: all 0.1s linear 0.1s;
+    cursor: pointer;
+    z-index: 100; /* Garante que fique acima dos cards */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease-in-out;
 }
-  
+
 .container button:hover {
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 7px 0px;
+    box-shadow: rgba(100, 100, 111, 0.4) 0px 7px 15px 0px;
     transform: scale(1.1);
+    background-color: #025aa5;
 }
-  
+
+/* RESPONSIVIDADE PARA CELULAR */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+        padding: 10px;
+        justify-items: center;
+    }
+
+    .container button {
+        bottom: 16px;
+        right: 16px;
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}

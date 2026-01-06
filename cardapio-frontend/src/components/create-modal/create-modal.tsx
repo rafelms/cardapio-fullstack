@@ -44,11 +44,9 @@ export function CreateModal({ closeModal }: ModalProps){
     }, [isSuccess, closeModal])
 
     return(
-        <div className='modal-overlay'>
-            {/* O fechamento agora é exclusivo deste botão */}
-            <button className="btn-close-overlay" onClick={closeModal}>X</button>
-            
+        <div className='modal-overlay'>            
             <div className="modal-body">
+                <button className="btn-close-overlay" onClick={closeModal}>x</button>
                 <h2>Cadastre um novo item</h2>
                 <form className="input-container">
                     <Input label="Nome do produto" value={title} updateValue={setTitle}/>

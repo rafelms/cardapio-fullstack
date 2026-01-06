@@ -19,7 +19,7 @@ function App() {
         {data?.map(foodData => 
           <Card
             key={foodData.id}
-            id={foodData.id} // Não esqueça de passar o ID aqui
+            id={foodData.id}
             price={foodData.price} 
             title={foodData.title} 
             image={foodData.image}
@@ -27,7 +27,7 @@ function App() {
         )}
       </div>
       {isModalOpen && <CreateModal closeModal={handleOpenModal}/>}
-      <button onClick={handleOpenModal} className="btn-new">Novo</button>
+      <button onClick={handleOpenModal} className="btn-new">Novo produto</button>
     </div>
   )
 }
