@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class Food {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) // geração de id sem fazer a lógica na mão
-    private int id;
+    private Long id;
     private String title;
     private String image;
     private Integer price;
