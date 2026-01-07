@@ -1,43 +1,57 @@
-# 🍽️ Cardápio Fullstack
+# 🍽️ Cardápio Fullstack - Sistema de Gerenciamento Digital
 
-Projeto de um sistema de cardápio digital completo, permitindo a visualização, adição e remoção de itens em tempo real. Desenvolvido para colocar em prática conceitos de integração Fullstack, persistência de dados e deploy em nuvem.
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)](https://spring.io/projects/spring-boot)
+[![Maven](https://img.shields.io/badge/Apache_Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)](https://maven.apache.org/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
-## 🚀 Tecnologias Utilizadas
+Este projeto é uma aplicação **Fullstack** completa que simula um cardápio digital. Ele permite a visualização dinâmica de itens, adição de novos produtos e remoção em tempo real, integrando uma interface moderna a um ecossistema robusto de backend.
 
-### Frontend
-* **React + TypeScript**: Construção da interface.
-* **Vite**: Ferramenta de build e desenvolvimento.
-* **Axios & React Query**: Gerenciamento de requisições HTTP e estado assíncrono.
-* **Vercel**: Hospedagem do frontend.
+---
 
-### Backend
-* **Java + Spring Boot**: Estrutura robusta para a API.
-* **Spring Data JPA**: Abstração da camada de persistência.
-* **Flyway**: Gerenciamento e histórico de migrações de banco de dados.
-* **Railway**: Hospedagem do backend e banco de dados.
+## 🏗️ Arquitetura e Tecnologias
 
-### Banco de Dados
-* **PostgreSQL**: Banco de dados relacional para armazenamento dos itens do cardápio.
+O projeto foi construído separando as responsabilidades em camadas, garantindo escalabilidade e facilidade de manutenção.
 
-## 🛠️ Desafios Superados durante o Desenvolvimento
 
-Durante a jornada de deploy, enfrentamos e resolvemos os seguintes pontos:
-1. **Ajuste de Tipos de Dados**: Correção da inconsistência entre o ID na entidade Java (`Long`) e o tipo no PostgreSQL (`bigint` via `BIGSERIAL`).
-2. **Configuração de Porta Dinâmica**: Implementação da variável `PORT` no backend para compatibilidade com o ambiente de produção do Railway.
-3. **CORS Policy**: Configuração de permissões no Spring Boot para permitir que o domínio da Vercel consumisse a API com segurança.
-4. **Variáveis de Ambiente**: Implementação de segurança via `.env` no frontend para esconder a URL da API e garantir que o `.gitignore` proteja dados sensíveis.
 
-## ⚙️ Como Rodar o Projeto
+### 💻 Frontend (Vercel)
+* **React + TypeScript**: Desenvolvimento de componentes reutilizáveis e tipagem estática para evitar erros em tempo de execução.
+* **Vite**: Ferramenta de build que proporcionou um ambiente de desenvolvimento ágil.
+* **React Query (TanStack Query)**: Gerenciamento de estado assíncrono, cache de dados e sincronização automática com a API.
+* **CSS Dinâmico**: Implementação de Grid Responsivo e interações avançadas de UI (como botões que surgem no hover).
 
-### Pré-requisitos
-* Java 17+
-* Node.js & NPM
-* Banco PostgreSQL
+### ⚙️ Backend & Build (Railway)
+* **Java 17 & Spring Boot**: Base da API REST, utilizando Injeção de Dependência e Inversão de Controle.
+* **Apache Maven**: O coração do gerenciamento do projeto:
+    * **Gestão de Dependências**: Automatiza o download e versionamento de bibliotecas como Spring Data e Flyway.
+    * **Ciclo de Vida (Build)**: Padroniza os processos de compilação e empacotamento (`.jar`) para produção.
+* **Spring Data JPA**: Abstração de banco de dados para operações CRUD simplificadas.
+* **Flyway**: Controle de versão do banco de dados (Migrations), garantindo que o esquema do PostgreSQL esteja sempre atualizado.
+* **PostgreSQL**: Banco de dados relacional robusto hospedado em nuvem.
 
-### Configuração do Backend
-No arquivo `src/main/resources/application.properties`, configure as credenciais do seu banco local ou de produção:
+---
+
+## 🛠️ Desafios Técnicos e Soluções
+
+Abaixo, os principais obstáculos superados durante os estudos de integração fullstack e backend:
+
+| Desafio | Descrição da Solução |
+| :--- | :--- |
+| **CORS Policy** | Configuração de segurança no Spring Boot para permitir requisições seguras vindas do domínio da Vercel. |
+| **Persistência de IDs** | Ajuste na entidade Java para lidar com a geração de IDs via `BIGSERIAL` no PostgreSQL. |
+| **Portas Dinâmicas** | Adaptação do backend para ler a variável de ambiente `PORT` exigida pelo Railway. |
+| **Variáveis de Ambiente** | Proteção de dados sensíveis (URLs de API e DB) através de arquivos `.env` e segredos na nuvem. |
+| **Layout Responsivo** | Criação de um Grid CSS que se adapta de 1 a 3 colunas dependendo do dispositivo. |
+
+---
+
+## ⚙️ Instalação e Execução
+
+### 1. Backend (Java/Maven)
+Navegue até o diretório do servidor e configure seu `application.properties`:
 ```properties
 spring.datasource.url=${SPRING_DATASOURCE_URL}
 spring.datasource.username=${SPRING_DATASOURCE_USERNAME}
 spring.datasource.password=${SPRING_DATASOURCE_PASSWORD}
-spring.jpa.hibernate.ddl-auto=update
