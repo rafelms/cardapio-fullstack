@@ -16,42 +16,55 @@ O projeto foi construído separando as responsabilidades em camadas, garantindo 
 
 
 
-### 💻 Frontend (Vercel)
+### 💻 Frontend (Hospedado na Vercel)
 * **React + TypeScript**: Desenvolvimento de componentes reutilizáveis e tipagem estática para evitar erros em tempo de execução.
-* **Vite**: Ferramenta de build que proporcionou um ambiente de desenvolvimento ágil.
-* **React Query (TanStack Query)**: Gerenciamento de estado assíncrono, cache de dados e sincronização automática com a API.
-* **CSS Dinâmico**: Implementação de Grid Responsivo e interações avançadas de UI (como botões que surgem no hover).
+* **Axios & React Query**: Gerenciamento de estado assíncrono, cache de dados e sincronização automática com a API.
+* **CSS Responsivo**: Layout dinâmico que se adapta de 1 a 3 colunas e interações avançadas de UI.
 
-### ⚙️ Backend & Build (Railway)
-* **Java 17 & Spring Boot**: Base da API REST, utilizando Injeção de Dependência e Inversão de Controle.
-* **Apache Maven**: O coração do gerenciamento do projeto:
-    * **Gestão de Dependências**: Automatiza o download e versionamento de bibliotecas como Spring Data e Flyway.
-    * **Ciclo de Vida (Build)**: Padroniza os processos de compilação e empacotamento (`.jar`) para produção.
-* **Spring Data JPA**: Abstração de banco de dados para operações CRUD simplificadas.
-* **Flyway**: Controle de versão do banco de dados (Migrations), garantindo que o esquema do PostgreSQL esteja sempre atualizado.
-* **PostgreSQL**: Banco de dados relacional robusto hospedado em nuvem.
+### ⚙️ Backend & Infraestrutura (Hospedado no Railway)
+* **Java 17 & Spring Boot**: Core da API REST, utilizando Injeção de Dependência e Inversão de Controle.
+* **Apache Maven**: Gerenciamento completo de dependências e ciclo de vida do build.
+* **Flyway**: Controle de versão do banco de dados (Migrations), garantindo integridade no PostgreSQL.
+* **PostgreSQL**: Banco de dados relacional robusto para persistência dos itens.
 
 ---
 
-## 🛠️ Desafios Técnicos e Soluções
+## 🧠 Aprendizados Chave & Insights Técnicos
 
-Abaixo, os principais obstáculos superados durante os estudos de integração fullstack e backend:
+Desenvolver este projeto proporcionou aprendizados práticos sobre o ecossistema Fullstack que foram fundamentais para minha formação:
+
+### 1. O Poder da Automação com Maven
+Dominar o **Maven** foi um divisor de águas. Entendi como o `pom.xml` atua como o cérebro do projeto, gerenciando o ciclo de vida da aplicação e garantindo que bibliotecas como o **Flyway** e o **Spring Data JPA** coexistissem sem conflitos de versão.
+
+### 2. Sincronia entre Frontend e API (React Query)
+A implementação do **React Query** ensinou-me a diferença entre "estado local" e "estado do servidor". Aprendi a lidar com:
+* **Cache Inteligente**: Evitando requisições desnecessárias.
+* **Mutations**: Sincronizando a interface instantaneamente após a exclusão ou adição de um item.
+
+### 3. Deploy e Infraestrutura em Nuvem
+Configurar o **Railway** e o **PostgreSQL** em nuvem mostrou-me a importância de separar o ambiente de desenvolvimento do de produção. O maior aprendizado aqui foi o uso de **Variáveis de Ambiente**, garantindo que as credenciais do banco nunca ficassem expostas no código-fonte.
+
+---
+
+## 🛠️ Desafios Superados durante o Desenvolvimento
 
 | Desafio | Descrição da Solução |
 | :--- | :--- |
-| **CORS Policy** | Configuração de segurança no Spring Boot para permitir requisições seguras vindas do domínio da Vercel. |
+| **CORS Policy** | Configuração de segurança no Spring Boot para permitir requisições seguras vindas da Vercel. |
 | **Persistência de IDs** | Ajuste na entidade Java para lidar com a geração de IDs via `BIGSERIAL` no PostgreSQL. |
 | **Portas Dinâmicas** | Adaptação do backend para ler a variável de ambiente `PORT` exigida pelo Railway. |
-| **Variáveis de Ambiente** | Proteção de dados sensíveis (URLs de API e DB) através de arquivos `.env` e segredos na nuvem. |
-| **Layout Responsivo** | Criação de um Grid CSS que se adapta de 1 a 3 colunas dependendo do dispositivo. |
+| **Layout Responsivo** | Criação de um Grid CSS que se adapta a diferentes telas e dispositivos. |
 
 ---
 
-## ⚙️ Instalação e Execução
+## ⚙️ Como Explorar o Código
 
-### 1. Backend (Java/Maven)
-Navegue até o diretório do servidor e configure seu `application.properties`:
-```properties
-spring.datasource.url=${SPRING_DATASOURCE_URL}
-spring.datasource.username=${SPRING_DATASOURCE_USERNAME}
-spring.datasource.password=${SPRING_DATASOURCE_PASSWORD}
+Para quem deseja analisar a implementação técnica:
+
+* **Backend**: Explore a pasta `src/main/java` para ver a organização das entidades, controllers e repositórios Spring Boot.
+* **Frontend**: Veja os hooks customizados em `src/hooks` para entender a lógica de consumo de dados com Axios e React Query.
+* **Banco de Dados**: Os scripts de migração do Flyway estão em `src/main/resources/db/migration`.
+
+---
+
+**Desenvolvido por Rafael Menezes de Santana como parte da jornada de aprendizado Fullstack e Backend.** 🚀
