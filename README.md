@@ -16,7 +16,7 @@ O projeto foi construído separando as responsabilidades em camadas, garantindo 
 
 
 
-### 💻 Frontend (Hospedado na Vercel)
+### 💻 Frontend (Hospedado na Vercel https://cardapio-fullstack-git-main-rafaels-projects-18be93a8.vercel.app/)
 * **React + TypeScript**: Desenvolvimento de componentes reutilizáveis e tipagem estática para evitar erros em tempo de execução.
 * **Axios & React Query**: Gerenciamento de estado assíncrono, cache de dados e sincronização automática com a API.
 * **CSS Responsivo**: Layout dinâmico que se adapta de 1 a 3 colunas e interações avançadas de UI.
